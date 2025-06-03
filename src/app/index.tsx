@@ -1,12 +1,18 @@
 import ChatListItem from '@/components/ChatListItem';
 import { StatusBar } from 'expo-status-bar';
-import { View } from 'react-native';
+import { FlatList, View } from 'react-native';
+import chats from '@assets/dummy-data/ChatRooms'
 
 export default function App() {
   return (
-    <View>
+    <View style={{flex: 1}}>
       <StatusBar style="auto" />
-      <ChatListItem />
+      <FlatList
+        data={chats}
+        renderItem={({item}) => (
+          <ChatListItem chat={item}/>
+        )}
+      />
     </View>
   );
 }
